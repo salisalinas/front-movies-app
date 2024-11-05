@@ -1,0 +1,22 @@
+.movie-detail-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  
+    mat-card {
+      mat-card-header {
+        margin-bottom: 20px;
+      }
+  
+      mat-list-item {
+        margin-bottom: 16px;
+        
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+  }

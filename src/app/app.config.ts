@@ -1,8 +1,24 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+// Firebase
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { routes } from './app.routes';
+import { firebaseConfig } from './config/firebase.config';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+   { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
+    provideRouter(routes),
+    provideHttpClient(),
+    provideAnimations(),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({"projectId":"movies-user-database","appId":"1:1002831383248:web:2d58f504afed79e8f7acd5","storageBucket":"movies-user-database.firebasestorage.app","apiKey":"AIzaSyCbRbtg0yoodwbP4b7Hch5lfK6NCf0WIXA","authDomain":"movies-user-database.firebaseapp.com","messagingSenderId":"1002831383248"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())
+  ]
 };
