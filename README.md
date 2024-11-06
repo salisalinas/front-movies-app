@@ -1,24 +1,10 @@
-# Front
+## Instrucciones
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+0. Seguimos las intrucciones en el readme.md que está en la carpeta del api para arrancar esta, antes de empezar con el frontend.
+1. Corremos npm install en terminal para instalar los modulos necesarios.
+2. Ejectuamos ng serve para arrancar en local la aplicacion, en el puerto 4200 (localhost:4200)
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-
-------------------------------------------------------------------
-
-# Explicacion parte 1 del ejercicio
-
-Aunque mi fuerte está más en el desarrollo front, si que tengo experiencia trabajando y manteniendo APIs.
-
-He decidido utilizar Express.js porque es lo más rápido que conozoco, y para almacenar datos y autentificarme, he creado un proyecto en Firebase, que me parece ideal para pequeños proyectos como este. 
-
+## Servidor de desarrollo
 
 
 # Explicacion parte 2 del ejercicio

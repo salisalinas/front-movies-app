@@ -26,7 +26,7 @@ export class MovieService {
 
   getNowPlaying(): Observable<any> {
     return this.getHeaders().pipe(
-      switchMap(headers => this.http.get(`${this.apiUrl}/now-playing`, headers))
+      switchMap(headers => this.http.get(`${this.apiUrl}/now_playing`, headers))
     );
   }
 

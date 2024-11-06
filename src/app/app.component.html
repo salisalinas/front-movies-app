@@ -1,11 +1,14 @@
 <mat-toolbar color="primary">
-  <span>mispelis.ng</span>
+  <div class="logo-container">
+   <!-- <img src="logo.png" alt="logo" class="logo"> -->
+    <span>mispelis.ng</span>
+  </div>
   <span class="spacer"></span>
   
   <ng-container *ngIf="user$ | async as user">
     <span class="welcome-text"> Bienvenido  <b>{{ userName}} </b></span>
-    <button mat-button routerLink="/movies">Movies</button>
-    <button mat-button (click)="logout()">Logout</button>
+    <button mat-button routerLink="/movies">Peliculas</button>
+    <button mat-button (click)="logout()">Cerrar sesión</button>
   </ng-container>
 
   <ng-container *ngIf="!(user$ | async)">

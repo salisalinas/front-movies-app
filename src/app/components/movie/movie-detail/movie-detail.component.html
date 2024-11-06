@@ -1,17 +1,17 @@
 <div class="movie-detail-container" *ngIf="movieCredits">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Reparto de la película</mat-card-title>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item *ngFor="let actor of movieCredits.cast">
-            <img matListAvatar [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path" [alt]="actor.name">
-            <div matLine>{{ actor.name }}</div>
-            <div matLine> es {{ actor.character }}</div>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Reparto de la película</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let actor of movieCredits.cast">
+          <img matListAvatar [src]="actor.profile_path ? 'https://image.tmdb.org/t/p/w200' + actor.profile_path : 'path/to/placeholder.jpg'" [alt]="actor.name">
+          <div matLine>{{ actor.name }}</div>
+          <div matLine>es {{ actor.character }}</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
