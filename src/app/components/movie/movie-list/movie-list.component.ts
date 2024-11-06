@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -23,7 +23,7 @@ export class MovieListComponent implements OnInit {
   nowPlayingMovies: any[] = [];
   popularMovies: any[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit() {
     this.loadMovies();
@@ -47,5 +47,9 @@ export class MovieListComponent implements OnInit {
         console.error('Error al recibir peliculas populares:', error);
       }
     );
+  }
+
+  viewDetails(movie: any) {
+    this.router.navigate(['/movies', movie.id], { state: { movie } });
   }
 }

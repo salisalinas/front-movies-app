@@ -6,7 +6,7 @@
   <span class="spacer"></span>
   
   <ng-container *ngIf="user$ | async as user">
-    <span class="welcome-text"> Bienvenido  <b>{{ userName}} </b></span>
+    <span class="welcome-text"> Bienvenido  <b> {{ userName | mayus }} </b></span>
     <button mat-button routerLink="/movies">Peliculas</button>
     <button mat-button (click)="logout()">Cerrar sesión</button>
   </ng-container>

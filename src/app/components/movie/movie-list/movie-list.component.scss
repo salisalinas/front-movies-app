@@ -14,25 +14,26 @@
   .movie-card {
     width: 100%;
     margin: 8px;
-    transition: transform 0.3s;
-  
+    transition: transform 0.3s, box-shadow 0.3s;
+
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
-  
+
     img {
       height: 300px;
       object-fit: cover;
+      border-radius: 8px; // Add rounded corners
     }
-  
+
     mat-card-content {
       h3 {
         margin: 8px 0; 
         font-size: 16px; 
         text-align: center;
       }
-  
+
       p {
         color: rgba(0, 0, 0, 0.7);
         text-align: justify;
@@ -40,22 +41,21 @@
     }
   }
 
+  @media (max-width: 1200px) {
+    mat-grid-list {
+      cols: 3; 
+    }
+  }
 
-@media (max-width: 1200px) {
-mat-grid-list {
-  cols: 3; 
-}
-}
+  @media (max-width: 900px) {
+    mat-grid-list {
+      cols: 2; 
+    }
+  }
 
-@media (max-width: 900px) {
-mat-grid-list {
-  cols: 2; 
-}
-}
-
-@media (max-width: 600px) {
-mat-grid-list {
-  cols: 1; 
-}
-}
+  @media (max-width: 600px) {
+    mat-grid-list {
+      cols: 1; 
+    }
+  }
 }

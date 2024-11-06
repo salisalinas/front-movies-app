@@ -1,17 +1,27 @@
-<div class="movie-detail-container" *ngIf="movieCredits">
+<div class="movie-detail-container" *ngIf="movie">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Reparto de la película</mat-card-title>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+      <button mat-button routerLink="/movies" class="return-button">Regresar</button>
     </mat-card-header>
     
     <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let actor of movieCredits.cast">
-          <img matListAvatar [src]="actor.profile_path ? 'https://image.tmdb.org/t/p/w200' + actor.profile_path : 'path/to/placeholder.jpg'" [alt]="actor.name">
-          <div matLine>{{ actor.name }}</div>
-          <div matLine>es {{ actor.character }}</div>
-        </mat-list-item>
-      </mat-list>
+      <div class="movie-content">
+        <div class="movie-poster">
+          <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="Movie Poster">
+          <p>{{ movie.overview }}</p>
+        </div>
+        <div class="cast-list">
+          <h3>Reparto</h3>
+          <mat-list>
+            <mat-list-item *ngFor="let actor of movieCredits?.cast">
+              <img matListAvatar [src]="actor.profile_path ? 'https://image.tmdb.org/t/p/w200' + actor.profile_path : 'path/to/placeholder.jpg'" [alt]="actor.name">
+              <div matLine>{{ actor.name }}</div>
+              <div matLine>es {{ actor.character }}</div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

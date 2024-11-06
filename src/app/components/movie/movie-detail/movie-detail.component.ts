@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MovieService } from '../../../services/movie/movie.service';
@@ -19,16 +19,22 @@ import { MovieService } from '../../../services/movie/movie.service';
 export class MovieDetailComponent implements OnInit {
   movieCredits: any;
   movieId: string = '';
+  movie: any;
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.movieId = this.route.snapshot.paramMap.get('id') || '';
-    if (this.movieId) {
-      this.loadMovieCredits();
+    this.movie = history.state.movie;
+    if (this.movie) {
+      this.movieId = this.route.snapshot.paramMap.get('id') || '';
+      console.log(this.movieId);
+      if (this.movieId) {
+        this.loadMovieCredits();
+      }
     }
   }
 
@@ -38,7 +44,7 @@ export class MovieDetailComponent implements OnInit {
         this.movieCredits = credits;
       },
       error => {
-        console.error('Error al recibi el reparto de la película:', error);
+        console.error('Error al recibir el reparto de la película:', error);
       }
     );
   }

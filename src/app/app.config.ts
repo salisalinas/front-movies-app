@@ -7,13 +7,16 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { routes } from './app.routes';
 import { firebaseConfig } from './config/firebase.config';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
+   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideRouter(routes),
     provideHttpClient(),
     provideAnimations(),

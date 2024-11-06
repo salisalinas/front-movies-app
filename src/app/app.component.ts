@@ -6,7 +6,8 @@ import { AuthService } from './services/auth/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { User } from '@angular/fire/auth';
+import { UserData } from './models/userData.model';
+import { MayusPipe } from './pipes/mayus.pipe';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { User } from '@angular/fire/auth';
     RouterOutlet, 
     RouterLink, 
     MatToolbarModule, 
-    MatButtonModule
+    MatButtonModule,
+    MayusPipe
   ],
   templateUrl: './app.component.html',
   styles: [`
@@ -30,21 +32,28 @@ import { User } from '@angular/fire/auth';
   `]
 })
 export class AppComponent implements OnInit {
-  user$: Observable<User | null>;
-  userData$: Observable<any>;
-  userName: string='';
+  user$: Observable<UserData | null>;
+  userName: string = '';
+
   constructor(
     private authService: AuthService,
     private router: Router
   ) {
-    this.user$ = this.authService.user$;
-    this.userData$ = this.authService.userData$; 
+    this.user$ = this.authService.userData$;
+    this.user$.subscribe(userData => {
+      console.log(userData);
+      if (userData) {
+        this.userName = `${userData.nombre} ${userData.apellidos}`;
+      }
+    });
   }
 
   ngOnInit() {
-    this.user$.subscribe(user => {
-      this.userName = user?.email || '';
-  
+    this.user$.subscribe(userData => {
+      console.log(userData);
+      if (userData) {
+        this.userName = `${userData.nombre} ${userData.apellidos}`;
+      }
     });
   }
 
