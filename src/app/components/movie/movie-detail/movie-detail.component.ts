@@ -38,7 +38,7 @@ export class MovieDetailComponent implements OnInit {
         this.movieCredits = credits;
       },
       error => {
-        console.error('Error fetching movie credits:', error);
+        console.error('Error al recibi el reparto de la película:', error);
       }
     );
   }

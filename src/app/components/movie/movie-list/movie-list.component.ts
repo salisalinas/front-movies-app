@@ -35,7 +35,7 @@ export class MovieListComponent implements OnInit {
         this.nowPlayingMovies = response.results;
       },
       error => {
-        console.error('Error fetching now playing movies:', error);
+        console.error('Error al recibir las peliculas en cartelera:', error);
       }
     );
 
@@ -44,7 +44,7 @@ export class MovieListComponent implements OnInit {
         this.popularMovies = response.results;
       },
       error => {
-        console.error('Error fetching popular movies:', error);
+        console.error('Error al recibir peliculas populares:', error);
       }
     );
   }

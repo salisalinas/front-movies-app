@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>Movie App</span>
+  <span>mispelis.ng</span>
   <span class="spacer"></span>
   
   <ng-container *ngIf="user$ | async as user">
@@ -9,8 +9,8 @@
   </ng-container>
 
   <ng-container *ngIf="!(user$ | async)">
-    <button mat-button routerLink="/login">Login</button>
-    <button mat-button routerLink="/register">Register</button>
+    <button mat-button routerLink="/login">Entrar</button>
+    <button mat-button routerLink="/register">Registro</button>
   </ng-container>
 </mat-toolbar>
 <router-outlet></router-outlet>

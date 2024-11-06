@@ -51,8 +51,8 @@ export class LoginComponent {
         );
         this.router.navigate(['/movies']);
       } catch (error: any) {
-        console.error('Login error:', error);
-        this.errorMessage = 'Invalid email or password';
+        console.error('Error al entrar:', error);
+        this.errorMessage = 'Email o contraseña no validos';
       } finally {
         this.isLoading = false;
       }

@@ -58,10 +58,8 @@ export class RegisterComponent {
           },
           this.registerForm.value.password
         );
-        console.log('Registration successful');
         await this.router.navigate(['/login']);
       } catch (error: any) {
-        console.error('Registration error:', error);
         this.errorMessage = error.message;
       }
     }
