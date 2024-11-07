@@ -8,7 +8,9 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { UserData } from './models/userData.model';
 import { MayusPipe } from './pipes/mayus.pipe';
-
+/**
+ * Componente principal de nuestra aplicación Angular, en el que insertamos otros componentes.
+ */
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -32,9 +34,19 @@ import { MayusPipe } from './pipes/mayus.pipe';
   `]
 })
 export class AppComponent implements OnInit {
+  /**
+   * Datos de nuestro usuario actualmente logeado, a los cuales podemos acceder.
+   */
   user$: Observable<UserData | null>;
+  /**
+   * Nombre de nuestro usuario que aparece en el navbar si esta logeado.
+   */
   userName: string = '';
-
+/**
+ * 
+ * @param authService Nos permite detectar si el usuario esta logeado para mostrar un menú u otro en el navbar
+ * @param router Para navegar por todas las rutas de nuesta aplicación.
+ */
   constructor(
     private authService: AuthService,
     private router: Router
@@ -47,7 +59,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
+/**
+ * Metodo del ciclo de vida de Angular {@link https://angular.dev/api/core/OnInit}
+ */
   ngOnInit() {
     this.user$.subscribe(userData => {
       console.log(userData);
@@ -56,7 +70,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
+/**
+ * Método de cerrar sesión.
+ */
   async logout() {
     try {
       await this.authService.logout();

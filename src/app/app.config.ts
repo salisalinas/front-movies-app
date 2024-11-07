@@ -12,7 +12,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { routes } from './app.routes';
 import { firebaseConfig } from './config/firebase.config';
 
-
+/**
+ * Aqui importamos varias partes de Angular y para acceder a Firebase
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },

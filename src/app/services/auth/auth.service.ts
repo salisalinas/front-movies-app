@@ -3,14 +3,26 @@ import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, authS
 import { Firestore, doc, setDoc, getDoc } from '@angular/fire/firestore'
 import { UserData } from '../../models/userData.model';
 import { Observable, from, map, switchMap } from 'rxjs';
-
+/**
+ * Servicio que interactua con las funcionalidades de autenticación de Firebase, asi como el almacenamiento de usuarios registrados en Firestore
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  /**
+   * Estancia observable que utilizaremos para la autenticacion con Firebase
+   */
   user$: Observable<any>;
+  /**
+   * Estancia observable de nuestra interfaz UserData
+   */
   userData$: Observable<UserData | null>;
-
+  /**
+   * Nuestro constructor tiene dos parametros que son importaciones de la libreria de Firebase
+   * @param auth Autenticación de Firebase
+   * @param firestore Almacenamiento de datos en Firestore
+   */
   constructor(
     private auth: Auth,
     private firestore: Firestore
@@ -39,7 +51,12 @@ export class AuthService {
       })
     );
   }
-
+/**
+ * Función de registro de usuario
+ * @param user Nombre de usuario, que será su email
+ * @param password Contraseña del usuario
+ * @returns 
+ */
   async register(user: UserData, password: string): Promise<void> {
     try {
       const credential = await createUserWithEmailAndPassword(this.auth, user.email, password);
@@ -57,7 +74,12 @@ export class AuthService {
       return Promise.reject(error);
     }
   }
-
+/**
+ * Función de inicio de sesión
+ * @param email Email del usuario, que utiliza para iniciar sesión
+ * @param password Cotnraseña del usuario
+ * @returns 
+ */
   async login(email: string, password: string) {
     try {
       return await signInWithEmailAndPassword(this.auth, email, password);
@@ -65,19 +87,31 @@ export class AuthService {
       throw error;
     }
   }
-
+/**
+ * Función de ciere de sesión
+ * @returns Llamada a la libreria auth para que nos cierre sesión
+ */
   logout() {
     return this.auth.signOut();
   }
-
+/**
+ * Función de obtención del token del usuario actual
+ * @returns Nuestro token
+ */
   getAuthToken(): Promise<string | null> {
     return this.auth.currentUser?.getIdToken() || Promise.resolve(null);
   }
-
-    getCurrentUser() {
+/**
+ * Función que devuelve el nombre del usuario actual (su correo)
+ * @returns Nombre de usuario actual
+ */
+  getCurrentUser() {
       return this.auth.currentUser;
     }
-
+/**
+ * Función uqe nos dice si el usuario esta logeado o no
+ * @returns True o false si el usuario esta logeado
+ */
     isLoggedIn(): Observable<boolean> {
       return this.user$.pipe(
         map(user => !!user)

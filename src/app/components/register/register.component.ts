@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -10,7 +11,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-
+/**
+ * Componente para el formulario de registro. Utiliza la capacidad de formularios de Angular
+ * @implements {ReactiveFormsModule, FormBuilder, FormGroup, Validators, AuthService}
+ * {@link https://angular.dev/guide/forms/reactive-forms }
+ */
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -29,14 +34,28 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  /**
+   * Estancia de FormGroup
+   */
   registerForm: FormGroup;
+  /**
+   * Mensaje de error, comienza vacio
+   */
   errorMessage: string = '';
-
+/**
+ * Necesitamos tres parametros en el constructor:
+ * @param fb Para construir el formulario
+ * @param authService Para registrar el usuario
+ * @param router Para redirigirle al login
+ */
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
+    /**
+     * Instancia del formulario de registro, que utiliza validadores para la comprobacion del correcto formato de los datos
+     */
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       surnames: ['', Validators.required],
@@ -45,10 +64,14 @@ export class RegisterComponent {
       dateOfBirth: ['', Validators.required]
     });
   }
-
+  /**
+   *Método que manda el formulario, validandolo y llamando a AuthService
+   */
   async onSubmit() {
+    /** Validamos formulario */
     if (this.registerForm.valid) {
       try {
+        /**Llamamos al servicio para registrar el usuario */
         await this.authService.register(
           {
             nombre: this.registerForm.value.name,
@@ -58,6 +81,7 @@ export class RegisterComponent {
           },
           this.registerForm.value.password
         );
+        /**Si todo va bien, nos vamos al login */
         await this.router.navigate(['/login']);
       } catch (error: any) {
         this.errorMessage = error.message;
