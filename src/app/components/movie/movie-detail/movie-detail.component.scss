@@ -1,6 +1,6 @@
 .movie-detail-container {
   padding: 20px;
-
+  background-color: #d84b4b41;
   mat-card {
     margin: 20px 0;
     background-color: #f9f9f9;
@@ -41,13 +41,16 @@
 
           img {
             width: 100%;
-            max-width: 300px; // Adjust as needed
+            max-width: 300px; 
             border-radius: 8px;
           }
 
           p {
-            margin-top: 10px;
+            margin-top: 20px;
+            margin-right: 70px;
             text-align: justify;
+            font-size: x-large;
+            font-stretch: semi-expanded;
           }
         }
 
