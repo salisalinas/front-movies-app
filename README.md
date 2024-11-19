@@ -9,8 +9,9 @@
 
 He decidido utilizar Angular, ya que tengo entendido que es lo que utilizais en Armadillo Amarillo y que, además de tener experiencia con ello, hace poco termine un curso, asi que tomo esta prueba como una oportunidad para practicar mis conocimientos. No seria el framework más adecuado para este tipo de proyecto, ya que está más pensado para aplicaciones grandes y medianas, gracias a lo completa que es la "caja de herramientas" con la que viene, pero creo que es interesante desarrollarlo así. He utilizado algunas de estas herramientas para sacarle provecho.
 
-Para darle un poco de "brillo" a la página, utilizo Material y scss, ya que prefiero dedicar el tiempo de la prueba a la parte funcional más que la estética.
+Para darle un poco de "brillo" a la página, utilizo Material y scss, ya que prefiero dedicar el tiempo de la prueba a la parte funcional más que la estética. 
 
+TODO: Mejorar estructura de la pagina, añadir paginacion
 
 
 ## EXPLICACIÓN DE ESTRUCTURA DEL EJERCICIO 
